@@ -92,19 +92,23 @@ end
 
 class TextSender
   def initialize
-    @account_sid = 'AC9c332190253787c068ae62a0f720XXXX' 
-    @auth_token = '0bc52cddbda31dc004dbca6ac538XXXX' 
+    @account_sid = 'ACdc8b63d927dae7e10f56c835268eb466' 
+    @auth_token = '66261f3f73ccb538eae02d5eb4c6b686' 
     @client = Twilio::REST::Client.new @account_sid, @auth_token
   end
    
   def send_text(gang_cell_numbers, text_body)
-    puts text_body
+    # p gang_cell_numbers
+    # p text_body
     # puts "******"
     # gang_cell_numbers.each do |number|
-    #   @client.account.sms.messages.create(
-    #   :from => '+1928852XXXX',
-    #   :to => number,
-    #   :body => text_body)
+      @client.account.sms.messages.create(
+      :from => "+15005550006",
+      :to => "+14153851405",
+      :body => text_body[0..159])
+      sleep(0.15)
+      p "Message sent!"
+      # p message.sid
     # end
   end
 end
